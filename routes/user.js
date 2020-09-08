@@ -40,6 +40,9 @@ userRoutes.login = async function (req, res) {
   connection.query(
     `select * from users where username = '${finishedBuffer.username}'`,
     function (err, results) {
+      if(err){
+	return res.status(500).send('MySQL error');
+      }
       if (results.length != 0) {
         bcrypt.compare(finishedBuffer.password, results[0].password, function (
           err,

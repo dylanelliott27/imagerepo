@@ -21,7 +21,7 @@ function MyImages() {
   const [pictureBeingEdited, setPictureBeingEdited] = useState({});
 
   useEffect(() => {
-    fetch("imagerepo.dylanelliott.ca/api/userimages", { credentials: "include" })
+    fetch("/api/userimages", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setImages(data))
       .catch((_) => alert("unable to fetch user specific images"));
@@ -29,14 +29,14 @@ function MyImages() {
 
   function handleModalOk() {
     setModalVisibility(false);
-    fetch("imagerepo.dylanelliott.ca/api/editimg", {
+    fetch("/api/editimg", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(pictureBeingEdited),
     })
       .then((res) => {
         if (res.status === 200) {
-          fetch("imagerepo.dylanelliott.ca/api/userimages", { credentials: "include" })
+          fetch("/api/userimages", { credentials: "include" })
             .then((res) => res.json())
             .then((data) => setImages(data))
             .catch((_) => alert("unable to fetch user specific images"));
@@ -47,7 +47,7 @@ function MyImages() {
   }
 
   function deleteImg(id) {
-    fetch("imagerepo.dylanelliott.ca/api/deleteimg", {
+    fetch("/api/deleteimg", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ pictureID: id }),
@@ -102,7 +102,7 @@ function MyImages() {
                 <img
                   width={272}
                   alt="logo"
-                  src={`imagerepo.dylanelliott.ca/api/images/${item.path}`}
+                  src={`/api/images/${item.path}`}
                 />
               }
             >
