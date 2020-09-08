@@ -1,0 +1,5 @@
+- Figure out console warnings cause from AntD library.
+- Sanitize user input on server.
+- Proper icons for each navbar item.
+- Cleaning up front-end code: lots of opportunities for reusable functions.
+- Add tests.
