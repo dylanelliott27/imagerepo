@@ -22,7 +22,7 @@ function App() {
 
 
   function updateUserInfo() {
-    fetch("http://localhost:8000/userinfo", { credentials: "include" })
+    fetch("imagerepo.dylanelliott.ca/api/userinfo", { credentials: "include" })
       .then((res) => res.json())
       .then((res) => setUserInfo(res));
   }
@@ -32,7 +32,7 @@ function App() {
       setUserInfo({ username: user, money: money });
       return;
     }
-    fetch("http://localhost:8000/login", {
+    fetch("imagerepo.dylanelliott.ca/api/login", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ username: user, password: pass }),
@@ -55,7 +55,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch("http://localhost:8000/userinfo", { credentials: "include" })
+    fetch("imagerepo.dylanelliott.ca/api/userinfo", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         setUserInfo({ username: data.username, money: data.money });

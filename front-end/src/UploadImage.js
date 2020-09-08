@@ -48,7 +48,7 @@ function UploadImage() {
       );
     }
 
-    fetch("http://localhost:8000/uploadimg", {
+    fetch("imagerepo.dylanelliott.ca/api/uploadimg", {
       body: formData,
       method: "POST",
       credentials: "include",
