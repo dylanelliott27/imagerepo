@@ -127,6 +127,7 @@ function UploadImage() {
               <option value="true">True</option>
               <option value="false">False</option>
             </select>
+            <label>Tags(comma seperated)</label>
             <input
               onChange={(event) => {
                 event.persist();
