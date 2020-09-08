@@ -8,21 +8,21 @@ function Home() {
   const { updateUserInfo, loggedIn } = useContext(userContext);
 
   useEffect(() => {
-    fetch("imagerepo.dylanelliott.ca/api/imagelist", { credentials: "include" })
+    fetch("/api/imagelist", { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setPublicImages(data))
       .catch((_) => console.error("issue fetching imagedata"));
   }, []);
 
   function purchaseImage(pictureID) {
-    fetch("imagerepo.dylanelliott.ca/api/purchasereq", {
+    fetch("/api/purchasereq", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ pictureID: pictureID }),
     })
       .then((res) => {
         if (res.status === 200) {
-          fetch("imagerepo.dylanelliott.ca/api/imagelist", { credentials: "include" })
+          fetch("/api/imagelist", { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
               updateUserInfo();
@@ -59,7 +59,7 @@ function Home() {
                 <img
                   width={272}
                   alt="logo"
-                  src={`imagerepo.dylanelliott.ca/api/images/${item.path}`}
+                  src={`/api/images/${item.path}`}
                 />
               }
             >

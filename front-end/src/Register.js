@@ -10,7 +10,7 @@ function Register() {
   const [loggedin, setLoggedIn] = useState();
   const { login, loggedIn } = useContext(userContext);
   function registerRequest(e) {
-    fetch("imagerepo.dylanelliott.ca/api/register", {
+    fetch("/api/register", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ username: username, password: password }),
