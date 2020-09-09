@@ -187,8 +187,13 @@ imageRoutes.uploadimg = function (req, res) {
       }
       (async function runQuery() {
       for (i = 0; i < req.files.length; i++) {
-        let fileDetails = JSON.parse(stringifiedObj[req.files[i].fieldname]);
+        try{
+          let fileDetails = JSON.parse(stringifiedObj[req.files[i].fieldname]);
           await queryDB(i, fileDetails);
+        }
+        catch(err){
+          throw new Error(err);
+        }
       }
       })();
       res.status(200).send("done");
