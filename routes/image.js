@@ -185,14 +185,12 @@ imageRoutes.uploadimg = function (req, res) {
           );
         });
       }
-
+      (async function runQuery() {
       for (i = 0; i < req.files.length; i++) {
         let fileDetails = JSON.parse(stringifiedObj[req.files[i].fieldname]);
-        (async function runQuery(i, fileDetails) {
           await queryDB(i, fileDetails);
-        })(i, fileDetails);
       }
-
+      })();
       res.status(200).send("done");
     }
   });
