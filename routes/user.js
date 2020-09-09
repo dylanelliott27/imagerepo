@@ -74,7 +74,7 @@ userRoutes.login = async function (req, res) {
 };
 
 userRoutes.register = async function (req, res) {
-  const finishedBuffer = parse.reqbody(req);
+  const finishedBuffer = await parse.reqbody(req);
   connection.query(
     `select * from users where username = '${finishedBuffer.username}'`,
     function (err, results) {

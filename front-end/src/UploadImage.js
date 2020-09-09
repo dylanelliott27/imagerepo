@@ -48,7 +48,7 @@ function UploadImage() {
       );
     }
 
-    fetch("/api/uploadimg", {
+    fetch(`${process.env.REACT_APP_URL}/uploadimg`, {
       body: formData,
       method: "POST",
       credentials: "include",

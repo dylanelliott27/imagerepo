@@ -10,7 +10,7 @@ function Register() {
   const [loggedin, setLoggedIn] = useState();
   const { login, loggedIn } = useContext(userContext);
   function registerRequest(e) {
-    fetch("/api/register", {
+    fetch(`${process.env.REACT_APP_URL}/register`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ username: username, password: password }),

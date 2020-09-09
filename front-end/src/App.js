@@ -22,7 +22,7 @@ function App() {
 
 
   function updateUserInfo() {
-    fetch("/api/userinfo", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_URL}/userinfo`, { credentials: "include" })
       .then((res) => res.json())
       .then((res) => setUserInfo(res));
   }
@@ -32,7 +32,7 @@ function App() {
       setUserInfo({ username: user, money: money });
       return;
     }
-    fetch("/api/login", {
+    fetch(`${process.env.REACT_APP_URL}/login`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ username: user, password: pass }),
@@ -55,7 +55,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch("/api/userinfo", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_URL}/userinfo`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => {
         setUserInfo({ username: data.username, money: data.money });

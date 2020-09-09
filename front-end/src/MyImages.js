@@ -21,7 +21,7 @@ function MyImages() {
   const [pictureBeingEdited, setPictureBeingEdited] = useState({});
 
   useEffect(() => {
-    fetch("/api/userimages", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_URL}/userimages`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setImages(data))
       .catch((_) => alert("unable to fetch user specific images"));
@@ -29,14 +29,14 @@ function MyImages() {
 
   function handleModalOk() {
     setModalVisibility(false);
-    fetch("/api/editimg", {
+    fetch(`${process.env.REACT_APP_URL}/editimg`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(pictureBeingEdited),
     })
       .then((res) => {
         if (res.status === 200) {
-          fetch("/api/userimages", { credentials: "include" })
+          fetch(`${process.env.REACT_APP_URL}/userimages`, { credentials: "include" })
             .then((res) => res.json())
             .then((data) => setImages(data))
             .catch((_) => alert("unable to fetch user specific images"));
@@ -47,7 +47,7 @@ function MyImages() {
   }
 
   function deleteImg(id) {
-    fetch("/api/deleteimg", {
+    fetch(`${process.env.REACT_APP_URL}/deleteimg`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ pictureID: id }),
@@ -102,7 +102,7 @@ function MyImages() {
                 <img
                   width={272}
                   alt="logo"
-                  src={`/api/images/${item.path}`}
+                  src={`${process.env.REACT_APP_URL}/images/${item.path}`}
                 />
               }
             >

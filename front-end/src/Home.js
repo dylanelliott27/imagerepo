@@ -8,21 +8,21 @@ function Home() {
   const { updateUserInfo, loggedIn } = useContext(userContext);
 
   useEffect(() => {
-    fetch("/api/imagelist", { credentials: "include" })
+    fetch(`${process.env.REACT_APP_URL}/imagelist`, { credentials: "include" })
       .then((res) => res.json())
       .then((data) => setPublicImages(data))
       .catch((_) => console.error("issue fetching imagedata"));
   }, []);
 
   function purchaseImage(pictureID) {
-    fetch("/api/purchasereq", {
+    fetch(`${process.env.REACT_APP_URL}/purchasereq`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({ pictureID: pictureID }),
     })
       .then((res) => {
         if (res.status === 200) {
-          fetch("/api/imagelist", { credentials: "include" })
+          fetch(`${process.env.REACT_APP_URL}/imagelist`, { credentials: "include" })
             .then((res) => res.json())
             .then((data) => {
               updateUserInfo();
@@ -59,7 +59,7 @@ function Home() {
                 <img
                   width={272}
                   alt="logo"
-                  src={`/api/images/${item.path}`}
+                  src={`${process.env.REACT_APP_URL}/images/${item.path}`}
                 />
               }
             >

@@ -3,8 +3,8 @@ const mysql = require("mysql");
 const fs = require("fs");
 const imageRoutes = Object.create({});
 const parse = require("../lib/parse");
-const path = require('path');
-require('dotenv').config();
+const path = require("path");
+require("dotenv").config();
 
 const options = {
   host: "localhost",
@@ -51,8 +51,8 @@ imageRoutes.userimages = function (req, res) {
       connection.query(
         `select imageDetails.id, imageDetails.price, imageDetails.path, imageDetails.owner, imageDetails.public, users.username from imageDetails join users on imageDetails.owner = users.id where users.username = '${decoded.username}'`,
         function (err, results) {
-            console.log(err);
-            console.log(results);
+          console.log(err);
+          console.log(results);
           let paths = [];
           for (i = 0; i < results.length; i++) {
             let tempobj = {
@@ -151,10 +151,10 @@ imageRoutes.purchasereq = async function (req, res) {
 };
 
 imageRoutes.image = function (req, res) {
-  fs.readdir(path.join(__dirname, '..', '/imgs'), (err, files) => {
+  fs.readdir(path.join(__dirname, "..", "/imgs"), (err, files) => {
     for (i = 0; i < files.length; i++) {
       if (files[i].includes(req.params.imagename)) {
-        res.sendFile(path.join(__dirname, '..', `/imgs/${files[i]}`));
+        res.sendFile(path.join(__dirname, "..", `/imgs/${files[i]}`));
         return;
       }
     }
@@ -186,15 +186,16 @@ imageRoutes.uploadimg = function (req, res) {
         });
       }
       (async function runQuery() {
-      for (i = 0; i < req.files.length; i++) {
-        try{
-          let fileDetails = JSON.parse(stringifiedObj[req.files[i].fieldname]);
-          await queryDB(i, fileDetails);
+        for (i = 0; i < req.files.length; i++) {
+          try {
+            let fileDetails = JSON.parse(
+              stringifiedObj[req.files[i].fieldname]
+            );
+            await queryDB(i, fileDetails);
+          } catch (err) {
+            throw new Error(err);
+          }
         }
-        catch(err){
-          throw new Error(err);
-        }
-      }
       })();
       res.status(200).send("done");
     }
