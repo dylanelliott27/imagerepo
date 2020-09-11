@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { userContext } from "./App.js";
+import { userContext } from "./userContext.js";
 function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();

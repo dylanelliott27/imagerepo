@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Checkbox, Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { userContext } from "./App.js";
+import { userContext } from "./userContext.js";
 
 function Register() {
   const [username, setUsername] = useState();

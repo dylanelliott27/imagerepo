@@ -1,7 +1,7 @@
 import React, { useState, useRef, useContext} from "react";
 import { Form, Button} from "antd";
 import { Redirect } from "react-router-dom";
-import {userContext} from './App';
+import {userContext} from './userContext';
 
 function UploadImage() {
   const [previewImages, setPreviewImages] = useState({});

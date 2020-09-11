@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import {Redirect} from 'react-router-dom';
 import { List, Avatar, Button, Row, Col } from "antd";
-import { userContext } from "./App";
+import { userContext } from "./userContext";
 
 function Home() {
   const [publicImages, setPublicImages] = useState([]);

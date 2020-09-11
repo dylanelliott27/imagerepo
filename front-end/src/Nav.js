@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { userContext } from "./App.js";
+import { userContext } from "./userContext.js";
 import { Menu } from "antd";
 
 import { MailOutlined, AppstoreOutlined } from "@ant-design/icons";
 
 function Nav() {
-  const { userInfo, logout } = useContext(userContext);
-
+  const {userInfo, logout} = useContext(userContext);
+  
+  
   function handleLogout(){
     document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     logout();
