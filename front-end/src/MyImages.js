@@ -1,22 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  List,
-  Avatar,
-  Space,
-  Button,
-  Row,
-  Col,
-  Modal,
-  Input,
-  Select,
-} from "antd";
-import {Redirect} from 'react-router-dom';
-import {userContext} from './userContext';
+import List from "antd/es/list";
+import Avatar from "antd/es/avatar";
+import Button from "antd/es/button";
+import Row from "antd/es/row";
+import Col from "antd/es/col";
+import Modal from "antd/es/modal";
+import Input from "antd/es/input";
+import Select from "antd/es/select";
+import { Redirect } from "react-router-dom";
+import { userContext } from "./userContext";
 
 const { Option } = Select;
 function MyImages() {
   const [images, setImages] = useState([]);
-  const {loggedIn} = useContext(userContext);
+  const { loggedIn } = useContext(userContext);
   const [modalVisibility, setModalVisibility] = useState(false);
   const [pictureBeingEdited, setPictureBeingEdited] = useState({});
 
@@ -36,7 +33,9 @@ function MyImages() {
     })
       .then((res) => {
         if (res.status === 200) {
-          fetch(`${process.env.REACT_APP_URL}/userimages`, { credentials: "include" })
+          fetch(`${process.env.REACT_APP_URL}/userimages`, {
+            credentials: "include",
+          })
             .then((res) => res.json())
             .then((data) => setImages(data))
             .catch((_) => alert("unable to fetch user specific images"));
@@ -77,8 +76,8 @@ function MyImages() {
     setModalVisibility(true);
   }
 
-  if(!loggedIn){
-    return <Redirect to='/login'></Redirect>
+  if (!loggedIn) {
+    return <Redirect to="/login"></Redirect>;
   }
   return (
     <Row>

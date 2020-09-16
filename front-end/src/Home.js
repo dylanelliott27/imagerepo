@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import {Redirect} from 'react-router-dom';
-import { List, Avatar, Button, Row, Col } from "antd";
+import List from "antd/es/list";
+import Avatar from "antd/es/avatar";
+import Button from "antd/es/button";
+import Row from "antd/es/row"
+import Col from "antd/es/col";
 import { userContext } from "./userContext";
 
 function Home() {

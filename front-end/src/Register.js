@@ -1,7 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { Form, Input, Button, Checkbox, Row, Col } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import Form from "antd/es/form";
+import Input from "antd/es/input";
+import Button from "antd/es/button";
+import Checkbox from "antd/es/checkbox";
+import Row from "antd/es/row";
+import Col from "antd/es/col";
+import UserOutlined from "@ant-design/icons/UserOutlined";
+import LockOutlined from "@ant-design/icons/LockOutlined";
 import { userContext } from "./userContext.js";
 
 function Register() {

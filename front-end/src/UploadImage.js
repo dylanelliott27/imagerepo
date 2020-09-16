@@ -1,5 +1,6 @@
 import React, { useState, useRef, useContext} from "react";
-import { Form, Button} from "antd";
+import Form from "antd/es/form";
+import Button from "antd/es/button";
 import { Redirect } from "react-router-dom";
 import {userContext} from './userContext';
 

@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { userContext } from "./userContext.js";
-import { Menu } from "antd";
+import Menu from "antd/es/menu";
 
-import { MailOutlined, AppstoreOutlined } from "@ant-design/icons";
+import MailOutlined from "@ant-design/icons/MailOutlined";
+import AppstoreOutlined from "@ant-design/icons/AppstoreOutlined";
 
 function Nav() {
-  const {userInfo, logout} = useContext(userContext);
-  
-  
-  function handleLogout(){
+  const { userInfo, logout } = useContext(userContext);
+
+  function handleLogout() {
     document.cookie = "auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     logout();
   }
@@ -56,7 +56,7 @@ function Nav() {
           ${userInfo.money}
         </Menu.Item>
       )}
-            {userInfo.username && (
+      {userInfo.username && (
         <Menu.Item
           onClick={handleLogout}
           style={{ float: "right" }}
